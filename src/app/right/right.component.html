@@ -36,14 +36,9 @@
     Get data from children component
   </div>
 
-  <div 
-    class="forData" 
-    [ngClass]="{ 'full-user' : getData() }"  
-  >
-
+  <div class="forData" [ngClass]="{ 'full-user' : getData() }">
     <div *ngIf="getData()">
       {{ getData() }}
     </div>
-
   </div>
 </div>
