@@ -1,2 +1,2 @@
 # Angular-data-transfer
-Data transfer between Angular components
+Data transfer between Angular components.
