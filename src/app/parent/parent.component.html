@@ -1,0 +1,58 @@
+<div class="text">
+  Interaction between components and data transfer in Angular application 
+</div>
+
+<div class="parent-container">
+  <h1> 
+    Parent container
+  </h1>
+
+  <button 
+    (click)="isShownActions = !isShownActions"
+    pButton 
+    type="button" 
+    class="p-button-rounded hide-button"
+    [label]="isShownActions ? 'Hide actions' : 'Show actions'"
+  ></button>
+
+  <div *ngIf="isShownActions">
+    Send Data to Children component
+  </div>
+
+  <div class="actions" *ngIf="isShownActions">
+    <input 
+      placeholder="Send it" 
+      type="text" 
+      #enteredData 
+      pInputText
+    >
+
+    <button
+      class="button"
+      pButton
+      type="button" 
+      label="Send data to children" 
+      (click)="sendData(enteredData.value)"
+    ></button>
+  </div>
+
+  <div 
+    class="rightData" 
+    [ngClass]="{ 'full-user' : rightUserData }"  
+  >
+    <div *ngIf="rightUserData">
+      {{ rightUserData }}
+    </div>
+  </div>
+
+  <div class="children-container">
+    <div  class="left-container">
+      <app-left [getUserData]="userData"></app-left>
+    </div>
+    
+    <div class="right-container">
+      <app-right (sentData)="getSentData($event)"></app-right>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,50 @@
+.right-container {
+  border: 2px solid grey;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.text {
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 10px;
+}
+.action {
+ margin: 20px;
+ display: flex;
+ align-items: center;
+ flex-direction: column;
+}
+.input-action {
+  width: 182px;
+}
+.button-action {
+  margin: 5px 0 20px;
+  width: 182px;
+}
+.hide-button {
+  width: fit-content;
+  position: absolute;
+  margin: 0 5px;
+  right: 0;
+  bottom: 10px;
+}
+.forData {
+  border: 1px solid cadetblue;
+  border-radius: 5%;
+  width: 182px;
+  height: 39px;
+  margin: 20px;
+  padding: 8px;
+}
+.full-user {
+  border: 2px solid deepskyblue;
+  border-radius: 5%;
+  background: #ffffff;
+  vertical-align: middle;
+  text-align: center;
+}
