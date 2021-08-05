@@ -7,10 +7,7 @@
     Transfer Data from the Parent component
   </div>
 
-  <div
-    class="user-data"
-    [ngClass]="{ 'full-user' : getUserData }"  
-  >
+  <div class="user-data" [ngClass]="{ 'full-user' : getUserData }">
     <div *ngIf="getUserData">
       {{ getUserData }}
     </div>
@@ -35,10 +32,6 @@
       label="Send data to children" 
       (click)="sendToService(usersData.value)"
     ></button>
-  
-
-
   </div>
-
 </div>
 
