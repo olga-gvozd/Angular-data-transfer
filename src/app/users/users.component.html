@@ -1,0 +1,43 @@
+<div class="actions">
+  <button 
+    (click)="goToParentState()"
+    pButton
+    type="button"
+    label="Go to ParentComponent"
+  ></button>
+
+  <button 
+    class="button"
+    (click)="getUserData()"
+    pButton
+    type="button"
+    label="Get user data"
+  ></button>
+
+  <div class="user-data">
+    <div *ngFor="let user of data" class="elements">
+      <span class="user-name">User name: {{ user.name }}</span>
+      <span>User email: {{ user.email }}</span>
+      <span>User gender: {{ user.gender }}</span>
+      <span>User id: {{ user.id }}</span>
+      <span>User status: {{ user.status }}</span>
+    </div>
+  </div>
+
+  <button
+    (click)="getUserComments()"
+    pButton
+    type="button"
+    label="Get user comments"
+  ></button>
+  
+  <div class="user-data">
+    <div *ngFor="let comment of comments" class="elements">
+      <span class="user-name">User name: {{ comment.name }}</span>
+      <span>User body: {{ comment.body }}</span>
+      <span>User email: {{ comment.email }}</span>
+      <span>User id: {{ comment.id }}</span>
+      <span>User post_id: {{ comment.post_id }}</span>
+    </div> 
+  </div>
+</div>

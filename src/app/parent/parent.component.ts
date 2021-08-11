@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-parent',
@@ -7,11 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParentComponent implements OnInit {
 
+  oldArray: string[] = [];
   userData: any;
   isShownActions=true;
   rightUserData: string;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -24,4 +28,9 @@ export class ParentComponent implements OnInit {
   getSentData(value: string): void {
     this.rightUserData = value;
   }
+
+  goToUsersState(): void {
+    this.router.navigate(['users']);
+  }
 }
+
