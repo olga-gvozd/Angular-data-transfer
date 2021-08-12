@@ -1,0 +1,45 @@
+<div class="right-container">
+  <div class="text">
+    Right children container
+  </div>
+
+  <div *ngIf="isShownActions">
+    Send Data to Parent component
+  </div>
+
+  <button 
+    (click)="isShownActions = !isShownActions"
+    pButton 
+    type="button" 
+    class="p-button-rounded hide-button"
+    [label]="isShownActions ? 'Hide actions' : 'Show actions'"
+  ></button>
+
+  <div *ngIf="isShownActions" class="action">
+    <input 
+      class="input-action"
+      type="text"  
+      pInputText
+      placeholder="Send it"
+      #userData
+    >
+    
+    <button
+      (click)="sendDataToParent(userData.value)"
+      class="button-action"
+      pButton
+      type="button" 
+      label="Send data to parent"
+    ></button>
+  </div>
+  
+  <div> 
+    Get data from children component
+  </div>
+
+  <div class="forData" [ngClass]="{ 'full-user' : getData() }">
+    <div *ngIf="getData()">
+      {{ getData() }}
+    </div>
+  </div>
+</div>

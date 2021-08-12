@@ -1,0 +1,37 @@
+<div class="left-container">
+  <div class="text">
+    Left children container
+  </div>
+
+  <div>
+    Transfer Data from the Parent component
+  </div>
+
+  <div class="user-data" [ngClass]="{ 'full-user' : getUserData }">
+    <div *ngIf="getUserData">
+      {{ getUserData }}
+    </div>
+  </div>
+
+  <div>
+    Transferring data between components via services
+  </div>
+
+  <div class="left-active">
+    <input 
+      placeholder="Send it" 
+      type="text" 
+      #usersData 
+      pInputText
+    > 
+
+    <button
+      class="button"
+      pButton
+      type="button" 
+      label="Send data to children" 
+      (click)="sendToService(usersData.value)"
+    ></button>
+  </div>
+</div>
+

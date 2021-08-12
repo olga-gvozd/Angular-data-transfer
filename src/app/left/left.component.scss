@@ -1,0 +1,39 @@
+.left-container {
+  border: 2px solid grey;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.text {
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 10px;
+}
+.user-data {
+  border: 1px solid cadetblue;
+  border-radius: 5%;
+  width: 182px;
+  height: 39px;
+  margin: 20px;
+  padding: 8px;
+}
+.full-user {
+  border: 2px solid deepskyblue;
+  border-radius: 5%;
+  background: #ffffff;
+  text-align: center;
+}
+.left-active {
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.button {
+  margin: 5px;
+}
+
