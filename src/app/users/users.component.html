@@ -4,17 +4,27 @@
     pButton
     type="button"
     label="Go to ParentComponent"
-  ></button>
-
-  <button 
     class="button"
-    (click)="getUserData()"
-    pButton
-    type="button"
-    label="Get user data"
   ></button>
 
-  <div class="user-data">
+  <div class="align-buttons">
+    <button 
+      class="button"
+      (click)="getUserData()"
+      pButton
+      type="button"
+      label="Get user data"
+    ></button>
+    <button
+        (click)="isShownData = !isShownData"
+        pButton
+        type="button"
+        class="hide-button"
+        [label]="isShown ? 'Hide user data' : 'Show user data'"
+      ></button>
+  </div>
+
+  <div *ngIf="isShownData" class="user-data">
     <div *ngFor="let user of data" class="elements">
       <span class="user-name">User name: {{ user.name }}</span>
       <span>User email: {{ user.email }}</span>
@@ -24,14 +34,25 @@
     </div>
   </div>
 
-  <button
-    (click)="getUserComments()"
-    pButton
-    type="button"
-    label="Get user comments"
-  ></button>
-  
-  <div class="user-data">
+  <div class="align-buttons">
+    <button
+      class="button"
+      (click)="getUserComments()"
+      pButton
+      type="button"
+      label="Get user comments"
+    ></button>
+    
+    <button
+      (click)="isShown = !isShown"
+      pButton
+      type="button"
+      class="hide-button"
+      [label]="isShown ? 'Hide comments data' : 'Show comments data'"
+    ></button>
+  </div>
+
+  <div *ngIf="isShown" class="user-data">
     <div *ngFor="let comment of comments" class="elements">
       <span class="user-name">User name: {{ comment.name }}</span>
       <span>User body: {{ comment.body }}</span>

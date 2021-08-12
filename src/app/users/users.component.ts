@@ -33,6 +33,8 @@ export class UsersComponent implements OnInit {
 
   data: User[];
   comments: Comments[];
+  isShown: boolean = true;
+  isShownData: boolean = true;
 
   constructor(
     private router: Router,

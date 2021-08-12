@@ -2,9 +2,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 .button {
+  width: 210px;
+  height: 40px;
   margin: 10px;
 }
 .elements {
@@ -28,4 +30,12 @@
 .user-data {
   display: flex;
   flex-wrap: wrap;
+}
+.hide-button {
+  width: fit-content;
+  height: 40px;
+  margin: 10px;
+}
+.align-buttons {
+  display: flex;
 }
