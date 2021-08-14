@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { UserResponse } from './users/users.component';
 
 @Injectable({
   providedIn: 'root'
@@ -20,11 +21,11 @@ export class UserService {
     return this.dateForRight;
   }
 
-  getUserData(): Observable<any> {
-    return this.http.get('https://gorest.co.in/public/v1/users');
+  getUserData(): Observable<UserResponse> {
+    return this.http.get<UserResponse>('https://gorest.co.in/public/v1/users');
   }
 
-  getCommentsData(): Observable<any> {
-    return this.http.get('https://gorest.co.in/public/v1/comments');
+  getCommentsData(): Observable<UserResponse> {
+    return this.http.get<UserResponse>('https://gorest.co.in/public/v1/comments');
   }
 }

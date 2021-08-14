@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, ReplaySubject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { UserService } from '../user.service';
 
-interface UserResponse {
+export interface UserResponse {
   data: any;
   meta: any;
 }
@@ -29,12 +30,14 @@ interface Comments {
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, OnDestroy {
 
   data: User[];
-  comments: Comments[];
+  comments: Observable<UserResponse>;
   isShown: boolean = true;
   isShownData: boolean = true;
+
+  private componentDestroy$: ReplaySubject<void> = new ReplaySubject();
 
   constructor(
     private router: Router,
@@ -44,22 +47,25 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngOnDestroy(): void {
+    this.componentDestroy$.next();
+    this.componentDestroy$.complete();
+  }
+
   goToParentState(): void {
     this.router.navigate(['parent']);
   }
 
   getUserData(): void {
     this.userService.getUserData()
+      .pipe(takeUntil(this.componentDestroy$))
       .subscribe((response: UserResponse) => {
         this.data = response.data;
       });
   }
 
   getUserComments(): void {
-    this.userService.getCommentsData()
-      .subscribe((response: UserResponse) => {
-        this.comments = response.data;
-      });
+    this.comments = this.userService.getCommentsData();
   }
 
 }

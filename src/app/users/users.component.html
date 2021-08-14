@@ -20,7 +20,7 @@
         pButton
         type="button"
         class="hide-button"
-        [label]="isShown ? 'Hide user data' : 'Show user data'"
+        [label]="isShownData ? 'Hide user data' : 'Show user data'"
       ></button>
   </div>
 
@@ -53,7 +53,7 @@
   </div>
 
   <div *ngIf="isShown" class="user-data">
-    <div *ngFor="let comment of comments" class="elements">
+    <div *ngFor="let comment of (comments | async)?.data" class="elements">
       <span class="user-name">User name: {{ comment.name }}</span>
       <span>User body: {{ comment.body }}</span>
       <span>User email: {{ comment.email }}</span>
