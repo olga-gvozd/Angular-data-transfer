@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ReplaySubject } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { UserService } from '../user.service';
 
-interface UserResponse {
+export interface UserResponse {
   data: any;
   meta: any;
 }
@@ -33,7 +33,7 @@ interface Comments {
 export class UsersComponent implements OnInit, OnDestroy {
 
   data: User[];
-  comments: Comments[];
+  comments: Observable<UserResponse>;
   isShown: boolean = true;
   isShownData: boolean = true;
 
@@ -58,17 +58,14 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   getUserData(): void {
     this.userService.getUserData()
+      .pipe(takeUntil(this.componentDestroy$))
       .subscribe((response: UserResponse) => {
         this.data = response.data;
       });
   }
 
   getUserComments(): void {
-    this.userService.getCommentsData()
-      .pipe(takeUntil(this.componentDestroy$))
-      .subscribe((response: UserResponse) => {
-        this.comments = response.data;
-      });
+    this.comments = this.userService.getCommentsData();
   }
 
 }
