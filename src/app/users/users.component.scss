@@ -1,8 +1,12 @@
-.actions {
+.user-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+
+  input {
+    margin: 10px;
+  }
 }
 .button {
   width: 210px;

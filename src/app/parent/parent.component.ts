@@ -32,5 +32,9 @@ export class ParentComponent implements OnInit {
   goToUsersState(): void {
     this.router.navigate(['users']);
   }
+
+  goToFormState(): void {
+    this.router.navigate(['form']);
+  }
 }
 

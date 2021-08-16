@@ -1,4 +1,4 @@
-<div class="actions">
+<div [formGroup]="user" class="user-container">
   <button 
     (click)="goToParentState()"
     pButton
@@ -61,4 +61,16 @@
       <span>User post_id: {{ comment.post_id }}</span>
     </div> 
   </div>
+
+  <input formControlName="name" placeholder="User name" pInputText />
+  <input formControlName="age" placeholder="User age" pInputText type="number"/>
+  <input formControlName="gender" placeholder="User gender" pInputText />
+  
+  <button (click)="getInputData()" pButton class="button" label="Get data from inputs"></button>
+  
+  <div>
+    {{ inputData }}
+  </div>
+
+  <button pButton (click)="setDefaultData()" class="button" label="Set default data"></button>
 </div>
