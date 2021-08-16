@@ -10,21 +10,23 @@ import { RightComponent } from './right/right.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { UserService } from './user.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     ParentComponent,
     LeftComponent,
-    RightComponent,
-  ],
+    RightComponent
+   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     InputTextModule,
-    ButtonModule
+    ButtonModule,
+    ReactiveFormsModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

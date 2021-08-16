@@ -1,0 +1,11 @@
+<div [formGroup]="form" class="form-container">
+  <input formControlName="name" placeholder="User name" pInputText />
+  <input formControlName="age" placeholder="User age" pInputText />
+  <input formControlName="city" placeholder="User city" pInputText />
+  <input formControlName="gender" placeholder="User gender" pInputText />
+  <button (click)="getInputData()" pButton label="Get data from inputs"></button>
+  <div>
+    {{ inputData }}
+  </div>
+  <button pButton (click)="changeName()" label="Change name"></button>
+</div>
