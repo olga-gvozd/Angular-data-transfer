@@ -36,11 +36,10 @@ export class UsersComponent implements OnInit, OnDestroy {
   isShown: boolean = true;
   isShownData: boolean = true;
   inputData: string;
-  user: FormGroup;
+  userForm: FormGroup;
 
   private componentDestroy$: ReplaySubject<void> = new ReplaySubject();
   
-
   constructor(
     private router: Router,
     private userService: UserService,
@@ -61,7 +60,7 @@ export class UsersComponent implements OnInit, OnDestroy {
   }
 
   getUserData(): void {
-    if (this.user.valid){
+    if (this.userForm.valid){
       this.userService.getUserData()
         .pipe(takeUntil(this.componentDestroy$))
         .subscribe((response: UserResponse) => {
@@ -75,24 +74,30 @@ export class UsersComponent implements OnInit, OnDestroy {
   }
 
   private initForm(): void {
-    this.user = this.formBuilder.group({
+    this.userForm = this.formBuilder.group({
       name: ['', [Validators.required]],
-      age: ['', [Validators.min(18), Validators.required]],
-      gender: ['', Validators.required],
+      age: ['', 
+        [
+          Validators.min(18),
+          Validators.required,
+          Validators.pattern('^[0-9]*$')
+        ]
+      ],
+      gender: ['', Validators.required]
     });
   }
 
   setDefaultData(): void {
-    this.user.get('name').setValue('Kate');
-    this.user.get('age').setValue('18');
-    this.user.get('gender').setValue('female');
+    this.userForm.get('name').setValue('Kate');
+    this.userForm.get('age').setValue('18');
+    this.userForm.get('gender').setValue('female');
   }
 
   getInputData(): void {
-    if (this.user.valid) {
-      const name = this.user.get('name').value;
-      const age = this.user.get('age').value;
-      const gender = this.user.get('gender').value;
+    if (this.userForm.valid) {
+      const name = this.userForm.get('name').value;
+      const age = this.userForm.get('age').value;
+      const gender = this.userForm.get('gender').value;
       this.inputData = `${name} ${age} ${gender}`;
     }
   }

@@ -1,6 +1,7 @@
 .form-container {
   display: flex;
   flex-direction: column;
+  width: fit-content;
 
   input {
     margin: 10px 0;
@@ -9,4 +10,7 @@
   button {
     margin: 10px 0;
   }
+}
+.button-to-parent {
+  background-color: darkcyan;
 }

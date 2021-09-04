@@ -1,10 +1,10 @@
-<div [formGroup]="user" class="user-container">
+<div class="user-container">
   <button 
     (click)="goToParentState()"
     pButton
     type="button"
     label="Go to ParentComponent"
-    class="button"
+    class="button-to-parent button"
   ></button>
 
   <div class="align-buttons">
@@ -62,9 +62,11 @@
     </div> 
   </div>
 
-  <input formControlName="name" placeholder="User name" pInputText />
-  <input formControlName="age" placeholder="User age" pInputText type="number"/>
-  <input formControlName="gender" placeholder="User gender" pInputText />
+  <form [formGroup]="userForm">
+    <input formControlName="name" placeholder="User name" pInputText />
+    <input formControlName="age" placeholder="User age" pInputText />
+    <input formControlName="gender" placeholder="User gender" pInputText />
+  </form>
   
   <button (click)="getInputData()" pButton class="button" label="Get data from inputs"></button>
   

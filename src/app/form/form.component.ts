@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -12,7 +13,8 @@ export class FormComponent implements OnInit {
   form: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -23,17 +25,15 @@ export class FormComponent implements OnInit {
         console.log(data);
       });
   }
+  
+  goToParentState(): void {
+    this.router.navigate(['parent']);
+  }
 
   private initForm(): void {
-    // this.form = new FormGroup({
-    //   name: new FormControl(''),
-    //   age: new FormControl(25, Validators.min(30)),
-    //   city: new FormControl(null, Validators.required),
-    //   gender: new FormControl(null),
-    // });
     this.form = this.formBuilder.group({
       name: ['', [Validators.required]],
-      age: [25, Validators.max(27)],
+      age: [null, Validators.max(27)],
       city: [],
       gender: [],
     });

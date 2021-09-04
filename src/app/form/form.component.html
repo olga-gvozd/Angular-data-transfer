@@ -1,9 +1,18 @@
 <div [formGroup]="form" class="form-container">
+  <button 
+    (click)="goToParentState()"
+    pButton
+    type="button"
+    label="Go to ParentComponent"
+    class="button-to-parent button"
+  ></button>
+  
   <input formControlName="name" placeholder="User name" pInputText />
   <input formControlName="age" placeholder="User age" pInputText />
   <input formControlName="city" placeholder="User city" pInputText />
   <input formControlName="gender" placeholder="User gender" pInputText />
   <button (click)="getInputData()" pButton label="Get data from inputs"></button>
+
   <div>
     {{ inputData }}
   </div>
