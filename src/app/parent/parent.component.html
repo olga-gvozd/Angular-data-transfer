@@ -34,6 +34,14 @@
       label="Send data to children" 
       (click)="sendData(enteredData.value)"
     ></button>
+
+    <button
+      class="button"
+      pButton
+      type="button" 
+      label="Send data(behaviorSubject)" 
+      (click)="sendDataBSubject(enteredData.value)"
+    ></button>
   </div>
 
   <div class="rightData" [ngClass]="{ 'full-user' : rightUserData }">

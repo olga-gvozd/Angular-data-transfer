@@ -41,5 +41,8 @@
     <div *ngIf="getData()">
       {{ getData() }}
     </div>
+    <div>
+      {{ getParentDataBSubject() | async }}
+    </div>
   </div>
 </div>

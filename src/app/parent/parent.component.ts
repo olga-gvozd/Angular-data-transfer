@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CommonService } from '../common.service';
 
 @Component({
   selector: 'app-parent',
@@ -14,7 +15,8 @@ export class ParentComponent implements OnInit {
   rightUserData: string;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private commonService: CommonService
   ) { }
 
   ngOnInit(): void {
@@ -22,7 +24,10 @@ export class ParentComponent implements OnInit {
 
   sendData(value: any): void {
     this.userData = value;
-    console.log(value);
+  }
+
+  sendDataBSubject(value: string): void {
+    this.commonService.setDataBSubject(value);
   }
 
   getSentData(value: string): void {

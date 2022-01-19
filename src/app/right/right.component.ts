@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { CommonService } from '../common.service';
 import { UserService } from '../user.service';
 
 @Component({
@@ -12,7 +14,11 @@ export class RightComponent implements OnInit {
 
   isShownActions = true;
 
-  constructor(private userService: UserService) { }
+
+  constructor(
+    private userService: UserService,
+    private commonService: CommonService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -23,6 +29,10 @@ export class RightComponent implements OnInit {
 
   getData():string {
     return this.userService.getDataFromLeft();
+  }
+
+  getParentDataBSubject(): BehaviorSubject<string> {
+    return this.commonService.dataBehSubject;
   }
 
 }
