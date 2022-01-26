@@ -21,11 +21,11 @@
       type="text"  
       pInputText
       placeholder="Send it"
-      #userData
+      [formControl]="rightInputData"
     >
     
     <button
-      (click)="sendDataToParent(userData.value)"
+      (click)="sendDataToParent()"
       class="button-action"
       pButton
       type="button" 

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 import { CommonService } from '../common.service';
 import { UserService } from '../user.service';
@@ -13,6 +14,7 @@ export class RightComponent implements OnInit {
   @Output() sentData: EventEmitter<string> = new EventEmitter();
 
   isShownActions = true;
+  rightInputData: FormControl;
 
 
   constructor(
@@ -21,10 +23,15 @@ export class RightComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.initControl()
   }
 
-  sendDataToParent(value: string): void {
-    this.sentData.emit(value);
+  private initControl(): void {
+    this.rightInputData = new FormControl();
+  }
+
+  sendDataToParent(): void {
+    this.sentData.emit(this.rightInputData.value);
   }
 
   getData():string {

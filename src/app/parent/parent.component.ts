@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonService } from '../common.service';
 
@@ -10,9 +11,10 @@ import { CommonService } from '../common.service';
 export class ParentComponent implements OnInit {
 
   oldArray: string[] = [];
-  userData: any;
+  userData: string;
   isShownActions=true;
   rightUserData: string;
+  parentInputData: FormControl;
 
   constructor(
     private router: Router,
@@ -20,14 +22,19 @@ export class ParentComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.initControl();
   }
 
-  sendData(value: any): void {
-    this.userData = value;
+  private initControl(): void {
+    this.parentInputData = new FormControl();
   }
 
-  sendDataBSubject(value: string): void {
-    this.commonService.setDataBSubject(value);
+  sendData(): void {
+    this.userData = this.parentInputData.value;
+  }
+
+  sendDataBSubject(): void {
+    this.commonService.setDataBSubject(this.parentInputData.value);
   }
 
   getSentData(value: string): void {

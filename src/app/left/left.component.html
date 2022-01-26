@@ -21,7 +21,7 @@
     <input 
       placeholder="Send it" 
       type="text" 
-      #usersData 
+      [formControl]="leftInputData" 
       pInputText
     > 
 
@@ -30,7 +30,7 @@
       pButton
       type="button" 
       label="Send data to children" 
-      (click)="sendToService(usersData.value)"
+      (click)="sendToService()"
     ></button>
   </div>
 </div>

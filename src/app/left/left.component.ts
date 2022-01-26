@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { UserService } from '../user.service';
 
 @Component({
@@ -7,15 +8,24 @@ import { UserService } from '../user.service';
   styleUrls: ['./left.component.scss']
 })
 export class LeftComponent implements OnInit {
+
   @Input() getUserData: any;
+
   dataToService: string;
+  leftInputData: FormControl;
 
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.initControl();
   }
-  sendToService(value: string): void {
-    this.dataToService = value;
+
+  private initControl(): void {
+    this.leftInputData = new FormControl;
+  }
+
+  sendToService(): void {
+    this.dataToService = this.leftInputData.value;
     this.userService.setDataFromLeft(this.dataToService);
   }
 }

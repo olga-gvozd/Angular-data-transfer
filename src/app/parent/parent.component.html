@@ -23,7 +23,7 @@
     <input 
       placeholder="Send it" 
       type="text" 
-      #enteredData 
+      [formControl]="parentInputData" 
       pInputText
     >
 
@@ -32,7 +32,7 @@
       pButton
       type="button" 
       label="Send data to children" 
-      (click)="sendData(enteredData.value)"
+      (click)="sendData()"
     ></button>
 
     <button
@@ -40,7 +40,7 @@
       pButton
       type="button" 
       label="Send data(behaviorSubject)" 
-      (click)="sendDataBSubject(enteredData.value)"
+      (click)="sendDataBSubject()"
     ></button>
   </div>
 
